@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#075b55">
+<title>Yaku | Emprende</title>
+<style>
+:root{--green:#075b55;--mint:#e6f6f0;--blue:#eaf3ff;--purple:#f0eaff;--pink:#ffe9f0;--gold:#fff1d7;--ink:#193b3a;--muted:#687c7a;--line:#dce9e5}
+*{box-sizing:border-box}body{margin:0;background:#f5faf8;color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input{font:inherit}button{cursor:pointer}
+.app{max-width:520px;min-height:100dvh;margin:auto;background:#fbfdfc;padding:16px 14px 94px;box-shadow:0 0 30px #153b3010}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.brand{display:flex;align-items:center;gap:9px}.logo{width:42px;height:42px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:22px}
+.brand h1{font-size:23px;margin:0;color:var(--green);letter-spacing:-1px}.brand p{margin:1px 0 0;font-size:11px;color:var(--muted)}
+.avatar{border:1px solid var(--line);background:#fff;border-radius:50%;width:38px;height:38px;color:var(--green);font-size:18px}
+.hero{background:linear-gradient(125deg,#064f4b,#08796c);color:white;border-radius:23px;padding:20px 18px;margin-bottom:18px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:150px;height:150px;border:1px solid #ffffff22;border-radius:50%;right:-38px;top:-50px;box-shadow:0 0 0 18px #ffffff08,0 0 0 38px #ffffff06}
+.hero small{opacity:.8;font-size:11px}.hero h2{font-size:24px;line-height:1.12;margin:7px 0}.hero p{font-size:12px;line-height:1.5;max-width:285px;margin:0 0 14px;color:#e0f4ef}
+.primary{background:#fff;color:var(--green);border:0;border-radius:13px;padding:11px 14px;font-size:12px;font-weight:750}
+.section-head{display:flex;align-items:end;justify-content:space-between;margin:18px 2px 10px}.section-head h3{margin:0;font-size:17px}.section-head span{font-size:11px;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.card{border:1px solid var(--line);border-radius:17px;padding:14px 12px;background:#fff;text-align:left;min-height:142px;display:flex;flex-direction:column;align-items:flex-start;gap:7px;transition:transform .15s,box-shadow .15s}
+.card:active{transform:scale(.98)}.card .emoji{font-size:25px}.card h4{font-size:14px;margin:0}.card p{font-size:11px;line-height:1.4;color:var(--muted);margin:0}.card .open{margin-top:auto;font-size:11px;font-weight:700;color:var(--green)}
+.mint{background:var(--mint)}.blue{background:var(--blue)}.purple{background:var(--purple)}.pink{background:var(--pink)}.gold{background:var(--gold)}
+.progress{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:17px;padding:15px}
+.progress-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700}.progress-top span{font-size:11px;color:var(--green)}
+.track{height:7px;background:#e8f0ed;border-radius:20px;margin:10px 0 7px;overflow:hidden}.track div{height:100%;width:35%;background:#0a8275;border-radius:20px}
+.progress small{font-size:11px;color:var(--muted)}
+.assistant{margin-top:15px;border-radius:17px;padding:14px;background:#e4f7f2;display:flex;gap:10px;align-items:center}.assistant .bot{font-size:26px}.assistant strong{font-size:13px}.assistant p{font-size:11px;color:var(--muted);margin:3px 0 0;line-height:1.4}.assistant button{margin-left:auto;border:0;background:var(--green);color:white;border-radius:11px;padding:9px;font-size:11px;white-space:nowrap}
+.bottom{position:fixed;z-index:5;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);padding:9px 10px calc(9px + env(safe-area-inset-bottom));background:#ffffffed;backdrop-filter:blur(12px);border-top:1px solid var(--line);display:flex;justify-content:space-around}
+.nav{background:none;border:0;color:#718481;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;min-width:55px}.nav b{font-size:19px;font-weight:500}.nav.active{color:var(--green);font-weight:800}
+.view{display:none}.view.active{display:block}.back{border:0;background:#e8f5f0;color:var(--green);border-radius:11px;padding:9px 12px;font-weight:700;margin-bottom:14px}
+.view-title{font-size:23px;margin:0 0 6px}.view-intro{color:var(--muted);font-size:13px;line-height:1.5;margin:0 0 16px}
+.item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;margin:9px 0;display:flex;align-items:center;gap:11px}.item .symbol{font-size:20px}.item strong{display:block;font-size:13px}.item small{display:block;color:var(--muted);font-size:11px;margin-top:3px}.item .arrow{margin-left:auto;color:var(--green)}
+.formbox{background:white;border:1px solid var(--line);border-radius:16px;padding:15px}.formbox label{font-size:12px;font-weight:700;display:block;margin:10px 0 5px}.formbox input{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;outline-color:var(--green)}.formbox button{margin-top:12px;width:100%;background:var(--green);color:white;border:0;padding:12px;border-radius:11px;font-weight:700}
+.note{font-size:11px;color:var(--muted);line-height:1.5}
+@media(min-width:480px){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}.hero h2{font-size:27px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+ <div class="brand"><div class="logo">♧</div><div><h1>Yaku</h1><p>Aprende · Registra · Crece</p></div></div>
+ <button class="avatar" onclick="openView('perfil')" aria-label="Perfil">♙</button>
+</header>
+
+<main id="home" class="view active">
+ <section class="hero"><small>BIENVENIDO A YAKU</small><h2>Tu negocio puede<br>llegar más lejos.</h2><p>Aprende, organiza tus finanzas y toma mejores decisiones para hacer crecer tu emprendimiento.</p><button class="primary" onclick="openView('capacitate')">Comenzar a aprender&nbsp; →</button></section>
+ <div class="section-head"><h3>¿Qué quieres hacer?</h3><span>Explora Yaku</span></div>
+ <section class="cards">
+  <button class="card mint" onclick="openView('capacitate')"><span class="emoji">🎓</span><h4>Capacítate</h4><p>Aprende a fortalecer tu negocio.</p><span class="open">Ver cursos →</span></button>
+  <button class="card blue" onclick="openView('registra')"><span class="emoji">📝</span><h4>Registra</h4><p>Organiza ventas, ingresos y gastos.</p><span class="open">Registrar →</span></button>
+  <button class="card gold" onclick="openView('finanzas')"><span class="emoji">📊</span><h4>Mis finanzas</h4><p>Conoce tu situación financiera.</p><span class="open">Ver resumen →</span></button>
+  <button class="card purple" onclick="openView('progreso')"><span class="emoji">🏅</span><h4>Mi progreso</h4><p>Revisa tus avances y logros.</p><span class="open">Ver progreso →</span></button>
+  <button class="card pink" onclick="openView('credito')"><span class="emoji">💗</span><h4>Crédito Yaku</h4><p>Conoce requisitos y orientación.</p><span class="open">Conocer más →</span></button>
+  <button class="card gold" onclick="openView('negocio')"><span class="emoji">🏪</span><h4>Mi negocio</h4><p>Define metas y mejora tu negocio.</p><span class="open">Organizar →</span></button>
+ </section>
+ <section class="progress"><div class="progress-top">Tu aprendizaje <span id="progressText">35% completado</span></div><div class="track"><div id="progressBar"></div></div><small>Continúa con tus módulos para avanzar.</small></section>
+ <section class="assistant"><span class="bot">🤖</span><div><strong>Asistente Yaku</strong><p>¿Necesitas una idea para hacer crecer tu negocio?</p></div><button onclick="openView('asistente')">Consultar</button></section>
+</main>
+
+<section id="capacitate" class="view"><button class="back" onclick="openView('home')">← Inicio</button><h2 class="view-title">Capacítate</h2><p class="view-intro">Aprende hoy para fortalecer tu negocio.</p>
+ <div class="item"><span class="symbol">📘</span><div><strong>Curso: Costos y ganancias</strong><small>Aprende a calcular cuánto ganas.</small></div><button class="arrow" onclick="completeModule(this)">Iniciar →</button></div>
+ <div class="item"><span class="symbol">👥</span><div><strong>Atención al cliente</strong><small>Mejora la experiencia de tus clientes.</small></div><button class="arrow" onclick="completeModule(this)">Iniciar →</button></div>
+ <div class="item"><span class="symbol">📈</span><div><strong>Ventas y marketing</strong><small>Ideas para promocionar tu negocio.</small></div><button class="arrow" onclick="completeModule(this)">Iniciar →</button></div>
+ <p class="note">Contenido demostrativo. Puedes reemplazar estos módulos por tus materiales reales.</p></section>
+
+<section id="registra" class="view"><button class="back" onclick="openView('home')">← Inicio</button><h2 class="view-title">Registra</h2><p class="view-intro">Anota una venta, ingreso o gasto. Los datos se guardan en este dispositivo.</p>
+ <form class="formbox" id="recordForm"><label for="tipo">Tipo de movimiento</label><select id="tipo" style="width:100%;padding:11px;border:1px solid var(--line);border-radius:10px"><option value="ingreso">Ingreso / venta</option><option value="gasto">Gasto</option></select><label for="detalle">Descripción</label><input id="detalle" required placeholder="Ej. Venta de productos"><label for="monto">Monto (S/)</label><input id="monto" type="number" min="0.01" step="0.01" required placeholder="0.00"><button type="submit">Guardar movimiento</button></form><h3>Movimientos recientes</h3><div id="records"><p class="note">Aún no has registrado movimientos.</p></div></section>
+
+<section id="finanzas" class="view"><button class="back" onclick="openView('home')">← Inicio</button><h2 class="view-title">Mis finanzas</h2><p class="view-intro">Un resumen de los movimientos que registres en Yaku.</p><div class="cards"><div class="card mint"><p>Ingresos</p><h4 id="income">S/ 0.00</h4></div><div class="card pink"><p>Gastos</p><h4 id="expenses">S/ 0.00</h4></div><div class="card blue"><p>Balance</p><h4 id="balance">S/ 0.00</h4></div></div><div class="item"><span class="symbol">💡</span><div><strong>Consejo financiero</strong><small>Registra cada movimiento y revisa tus gastos con frecuencia.</small></div></div></section>
+
+<section id="progreso" class="view"><button class="back" onclick="openView('home')">← Inicio</button><h2 class="view-title">Mi progreso</h2><p class="view-intro">Cada módulo completado te acerca a tus metas.</p><div class="progress"><div class="progress-top">Módulos completados <span id="moduleCount">0 de 3</span></div><div class="track"><div id="moduleBar" style="width:0"></div></div><small>Entra a Capacítate para iniciar o completar un módulo.</small></div></section>
+
+<section id="credito" class="view"><button class="back" onclick="openView('home')">← Inicio</button><h2 class="view-title">Crédito Yaku</h2><p class="view-intro">Infórmate antes de solicitar un producto financiero.</p><div class="item"><span class="symbol">📋</span><div><strong>Revisa los requisitos</strong><small>Consulta las condiciones de la entidad financiera.</small></div></div><div class="item"><span class="symbol">🧮</span><div><strong>Evalúa tu capacidad de pago</strong><small>Calcula si podrás cubrir las cuotas sin afectar gastos esenciales.</small></div></div><div class="item"><span class="symbol">🔒</span><div><strong>Protege tus datos</strong><small>No compartas contraseñas ni códigos de seguridad.</small></div></div><p class="note">Esta sección es informativa. No realiza solicitudes ni aprobaciones reales de crédito.</p></section>
+
+<section id="negocio" class="view"><button class="back" onclick="openView('home')">← Inicio</button><h2 class="view-title">Mi negocio</h2><p class="view-intro">Define tus objetivos y organiza tus ideas.</p><form class="formbox" id="goalForm"><label for="business">Nombre de tu negocio</label><input id="business" placeholder="Ej. Bodega El Sol"><label for="goal">Mi próxima meta</label><input id="goal" placeholder="Ej. Aumentar mis ventas"><button type="submit">Guardar mis datos</button><p id="goalSaved" class="note"></p></form></section>
+
+<section id="asistente" class="view"><button class="back" onclick="openView('home')">← Inicio</button><h2 class="view-title">Asistente Yaku</h2><p class="view-intro">Cuéntame qué quieres mejorar y te mostraré una idea inicial.</p><div class="formbox"><label for="question">¿En qué necesitas ayuda?</label><input id="question" placeholder="Ej. Quiero vender más"><button onclick="askAssistant()">Obtener una idea</button><p id="answer" class="note"></p></div><p class="note">Este asistente funciona con respuestas de ejemplo y no utiliza inteligencia artificial conectada.</p></section>
+
+<section id="perfil" class="view"><button class="back" onclick="openView('home')">← Inicio</button><h2 class="view-title">Mi perfil</h2><p class="view-intro">Personaliza tu experiencia en Yaku.</p><div class="item"><span class="symbol">🌱</span><div><strong>Emprendedor Yaku</strong><small>Tus registros se guardan localmente en este dispositivo.</small></div></div></section>
+</div>
+<nav class="bottom">
+ <button class="nav active" data-view="home" onclick="openView('home')"><b>⌂</b>Inicio</button>
+ <button class="nav" data-view="capacitate" onclick="openView('capacitate')"><b>♧</b>Aprende</button>
+ <button class="nav" data-view="registra" onclick="openView('registra')"><b>＋</b>Registra</button>
+ <button class="nav" data-view="finanzas" onclick="openView('finanzas')"><b>▥</b>Finanzas</button>
+ <button class="nav" data-view="negocio" onclick="openView('negocio')"><b>⌂</b>Negocio</button>
+</nav>
+<script>
+const $ = id => document.getElementById(id);
+function openView(id){
+ document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));
+ document.querySelectorAll('.nav').forEach(n=>n.classList.toggle('active',n.dataset.view===id));
+ window.scrollTo({top:0,behavior:'smooth'});
+ if(id==='finanzas') updateFinance();
+}
+let records=JSON.parse(localStorage.getItem('yakuRecords')||'[]');
+let completed=JSON.parse(localStorage.getItem('yakuCompleted')||'[]');
+function money(n){return 'S/ '+Number(n).toFixed(2)}
+function saveRecords(){localStorage.setItem('yakuRecords',JSON.stringify(records));renderRecords();updateFinance()}
+function renderRecords(){
+ const box=$('records');
+ if(!records.length){box.innerHTML='<p class="note">Aún no has registrado movimientos.</p>';return}
+ box.innerHTML=records.slice().reverse().map(r=>`<div class="item"><span class="symbol">${r.tipo==='ingreso'?'💰':'🧾'}</span><div><strong>${escapeHtml(r.detalle)}</strong><small>${r.tipo==='ingreso'?'Ingreso':'Gasto'} · ${r.fecha}</small></div><b style="margin-left:auto;color:${r.tipo==='ingreso'?'#08796c':'#b34d68'}">${r.tipo==='ingreso'?'+':'−'}${money(r.monto)}</b></div>`).join('');
+}
+function updateFinance(){
+ let inc=records.filter(r=>r.tipo==='ingreso').reduce((s,r)=>s+r.monto,0);
+ let exp=records.filter(r=>r.tipo==='gasto').reduce((s,r)=>s+r.monto,0);
+ $('income').textContent=money(inc);$('expenses').textContent=money(exp);$('balance').textContent=money(inc-exp);
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+$('recordForm').addEventListener('submit',e=>{
+ e.preventDefault();records.push({tipo:$('tipo').value,detalle:$('detalle').value.trim(),monto:Number($('monto').value),fecha:new Date().toLocaleDateString('es-PE')});
+ saveRecords();e.target.reset();alert('Movimiento guardado en este dispositivo.');
+});
+function completeModule(btn){
+ const name=btn.parentElement.querySelector('strong').textContent;
+ if(!completed.includes(name)){completed.push(name);localStorage.setItem('yakuCompleted',JSON.stringify(completed))}
+ btn.textContent='Completado ✓';btn.disabled=true;updateProgress();alert('¡Buen trabajo! Módulo marcado como completado.');
+}
+function updateProgress(){
+ const count=Math.min(completed.length,3),pct=Math.round(count/3*100);
+ $('moduleCount').textContent=count+' de 3';$('moduleBar').style.width=pct+'%';
+ $('progressText').textContent=pct+'% completado';$('progressBar').style.width=pct+'%';
+}
+$('goalForm').addEventListener('submit',e=>{
+ e.preventDefault();localStorage.setItem('yakuBusiness',$('business').value);localStorage.setItem('yakuGoal',$('goal').value);
+ $('goalSaved').textContent='Datos guardados en este dispositivo.';alert('Datos guardados.');
+});
+function askAssistant(){
+ const q=$('question').value.toLowerCase();let a='Empieza registrando tus ventas y gastos para identificar qué puedes mejorar.';
+ if(q.includes('vend')||q.includes('cliente'))a='Prueba una promoción sencilla, pide opiniones a tus clientes y registra qué productos se venden más.';
+ else if(q.includes('gasto')||q.includes('dinero')||q.includes('finanz'))a='Anota todos tus ingresos y gastos durante una semana. Luego separa los gastos necesarios de los que puedes reducir.';
+ else if(q.includes('meta')||q.includes('crecer'))a='Define una meta concreta para este mes, como conseguir cinco clientes nuevos, y revisa tu avance cada semana.';
+ $('answer').textContent=a;
+}
+if(localStorage.getItem('yakuBusiness'))$('business').value=localStorage.getItem('yakuBusiness');
+if(localStorage.getItem('yakuGoal'))$('goal').value=localStorage.getItem('yakuGoal');
+renderRecords();updateFinance();updateProgress();
+</script>
+</body>
+</html>
