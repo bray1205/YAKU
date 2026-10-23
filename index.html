@@ -37,7 +37,10 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 .note{font-size:11px;color:var(--muted);line-height:1.5}
 @media(min-width:480px){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}.hero h2{font-size:27px}}
 </style>
-</head>
+</head
+ <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+ >
 <body>
 <div class="app">
 <header>
@@ -139,6 +142,207 @@ function askAssistant(){
 if(localStorage.getItem('yakuBusiness'))$('business').value=localStorage.getItem('yakuBusiness');
 if(localStorage.getItem('yakuGoal'))$('goal').value=localStorage.getItem('yakuGoal');
 renderRecords();updateFinance();updateProgress();
-</script>
+</script
+ 
+/* ===== DISEÑO RESPONSIVE PARA YAKU ===== */
+
+/* Evitar desbordamientos */
+html {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  min-width: 320px;
+}
+
+.app {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 20px 24px 100px;
+}
+
+/* Imágenes, formularios y controles */
+img,
+input,
+select,
+textarea {
+  max-width: 100%;
+}
+
+button {
+  touch-action: manipulation;
+}
+
+/* Teléfonos */
+@media (max-width: 600px) {
+  .app {
+    padding: 14px 12px 90px;
+  }
+
+  header {
+    gap: 8px;
+  }
+
+  .brand h1 {
+    font-size: 21px;
+  }
+
+  .hero {
+    padding: 18px 15px;
+    border-radius: 19px;
+  }
+
+  .hero h2 {
+    font-size: clamp(22px, 6vw, 29px);
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .card {
+    min-width: 0;
+    padding: 12px 10px;
+    overflow-wrap: anywhere;
+  }
+
+  .card h4 {
+    font-size: 13px;
+  }
+
+  .card p {
+    font-size: 11px;
+  }
+
+  .section-head h3 {
+    font-size: 16px;
+  }
+
+  .bottom {
+    width: 100%;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .nav {
+    flex: 1;
+    min-width: 0;
+    font-size: 10px;
+  }
+
+  .assistant {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .assistant button {
+    margin-left: 36px;
+  }
+}
+
+/* Tablets */
+@media (min-width: 601px) and (max-width: 900px) {
+  .app {
+    padding: 22px 24px 100px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* PC y laptops */
+@media (min-width: 901px) {
+  body {
+    background: #eef5f2;
+  }
+
+  .app {
+    padding: 28px 36px 110px;
+    box-shadow: 0 0 35px #153b3010;
+  }
+
+  header {
+    margin-bottom: 24px;
+  }
+
+  .hero {
+    padding: 32px;
+    min-height: 230px;
+  }
+
+  .hero h2 {
+    font-size: 34px;
+  }
+
+  .hero p {
+    font-size: 14px;
+    max-width: 480px;
+  }
+
+  .section-head {
+    margin-top: 28px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    min-height: 165px;
+    padding: 20px;
+  }
+
+  .card h4 {
+    font-size: 16px;
+  }
+
+  .card p {
+    font-size: 13px;
+  }
+
+  .bottom {
+    width: min(800px, calc(100% - 40px));
+    border: 1px solid #dce9e5;
+    border-radius: 18px;
+    bottom: 16px;
+    box-shadow: 0 6px 25px #153b3012;
+  }
+
+  .nav {
+    font-size: 12px;
+    padding: 4px 14px;
+  }
+
+  .nav b {
+    font-size: 22px;
+  }
+
+  .view-title {
+    font-size: 30px;
+  }
+
+  .view-intro {
+    font-size: 15px;
+    max-width: 700px;
+  }
+
+  .formbox {
+    max-width: 700px;
+  }
+
+  #records .item {
+    max-width: 850px;
+  }
+}
+
+ >
 </body>
 </html>
